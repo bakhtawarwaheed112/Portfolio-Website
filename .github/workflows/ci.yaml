@@ -22,7 +22,7 @@ jobs:
           npm install -g htmlhint stylelint stylelint-config-standard
 
       - name: Run HTMLHint
-        run: htmlhint "src/**/*.html"
+        run: npx htmlhint "src/**/*.html"
 
       - name: Run Stylelint
-        run: stylelint "styles/**/*.css"
+        run: npx stylelint"styles/**/*.css"

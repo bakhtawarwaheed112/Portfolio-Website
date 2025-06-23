@@ -4,6 +4,10 @@ on:
   pull_request:
     branches:
       - develop
+  push:
+    branches:
+      - develop
+
 
 jobs:
   lint:
@@ -22,8 +26,7 @@ jobs:
           npm install -g htmlhint stylelint stylelint-config-standard
 
       - name: Run HTMLHint
-        run: npx htmlhint "src/**/*.html"
+        run: htmlhint "src/**/*.html"
 
       - name: Run Stylelint
-        run: npx stylelint "styles/**/*.css"
-
+        run: stylelint "styles/**/*.css"

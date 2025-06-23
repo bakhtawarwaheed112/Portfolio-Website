@@ -1,7 +1,12 @@
 name: ci-develop
-
 on:
   pull_request:
+    branches:
+      - develop
+    types:
+      - opened 
+      - synchronize
+  push:
     branches:
       - develop
 
@@ -9,20 +14,23 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Welcome message
+        run: echo "Welcome to CI pipeline for this repo"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '16'
 
       - name: Install linters
         run: |
-          npm install -g htmlhint stylelint stylelint-config-standard
+          npm install -g stylelint stylelint-config-standard
 
-      - name: Run HTMLHint
-        run: htmlhint "src/**/*.html"
+      - name: Lint HTML files
+        run: npx htmlhint "src/**/*.html"
 
-      - name: Run Stylelint
+      - name: Lint CSS files
         run: stylelint "styles/**/*.css"

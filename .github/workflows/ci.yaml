@@ -25,4 +25,5 @@ jobs:
         run: npx htmlhint "src/**/*.html"
 
       - name: Run Stylelint
-        run: npx stylelint"styles/**/*.css"
+        run: npx stylelint "styles/**/*.css"
+
